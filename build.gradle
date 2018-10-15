@@ -1,0 +1,7 @@
+apply from: rootProject.file("gradle_support/docker-compose.gradle")
+version '1.0-SNAPSHOT'
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.10.2'
+}

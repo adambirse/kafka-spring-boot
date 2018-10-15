@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "se.transmode.gradle:gradle-docker:1.2"
+    }
+}
+
+apply plugin: se.transmode.gradle.plugins.docker.DockerPlugin
+
+
+ext.dockerDir = "../docker/"
+
+task prepareDockerInput {
+    dependsOn build
+    def inputDir = project.file("$project.buildDir/docker")
+
+    doFirst {
+        copy {
+            from dockerDir
+            into inputDir
+
+            include 'Dockerfile-template'
+            rename 'Dockerfile-template', 'Dockerfile'
+            filter {
+                it.replaceAll('@version@', project.properties['version']).replaceAll('@app_name@', jar.baseName)
+            }
+        }
+        copy {
+            from jar
+            into inputDir
+        }
+    }
+}
+
+task buildDocker(type: Docker, dependsOn: prepareDockerInput) {
+    push = false
+    applicationName = jar.baseName
+    dockerfile = file("${project.buildDir}/docker/Dockerfile")
+}
