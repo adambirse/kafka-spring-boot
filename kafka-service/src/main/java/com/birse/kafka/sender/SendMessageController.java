@@ -1,5 +1,6 @@
 package com.birse.kafka.sender;
 
+import com.birse.kafka.project.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,15 @@ public class SendMessageController {
 
     @GetMapping
     public void send() {
-        sender.send("Spring Kafka and Spring Boot Configuration Example");
+
+        sender.send(createProject());
+    }
+
+    private Project createProject() {
+        Project p = new Project();
+        p.setId(1L);
+        p.setName("My Project");
+        p.setSubmitted(true);
+        return p;
     }
 }

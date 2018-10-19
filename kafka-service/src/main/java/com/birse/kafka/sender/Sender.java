@@ -1,5 +1,6 @@
 package com.birse.kafka.sender;
 
+import com.birse.kafka.project.Project;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,13 @@ public class Sender {
     private static final Logger LOG = LoggerFactory.getLogger(Sender.class);
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<Long, Project> kafkaTemplate;
 
     @Value("${app.topic.foo}")
     private String topic;
 
-    public void send(String message){
-        LOG.info("sending message='{}' to topic='{}'", message, topic);
-        kafkaTemplate.send(topic, message);
+    public void send(Project project){
+        LOG.info("sending message='{}' to topic='{}'", project, topic);
+        kafkaTemplate.send(topic, project.getId(),project);
     }
 }
