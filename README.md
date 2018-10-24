@@ -13,6 +13,16 @@
 
 - ./gradlew composeDown
 
+##### To create a topic
+
+- `docker-compose -f docker-compose/docker-compose.yml exec kafka1 bash`
+- `kafka-topics --create --zookeeper zookeeper1:2181 --replication-factor 3 --partitions 10 --topic projects`
+
+##### To query the cluster
+
+- `docker-compose -f docker-compose/docker-compose.yml exec worker bash`
+- `kafkacat -b kafka1:9092 -L`
+
 ##### to send a message
 
 - GET: http://localhost:8080/send
@@ -21,15 +31,6 @@
 
 - `docker-compose -f docker-compose/docker-compose.yml logs -f  kafka-service`
 
-##### To create a topic
-
-- `docker-compose -f docker-compose/docker-compose.yml exec kafka1 bash`
-- `kafka-topics --create --zookeeper zookeeper:2181 --replication-factor 3 --partitions 10 --topic projects`
-
-##### To query the cluster
-
-- `docker-compose -f docker-compose/docker-compose.yml exec worker bash`
-- `kafkacat -b kafka1:9092 -L`
 
 ##### Stop a cluster node
 `docker-compose -f docker-compose/docker-compose.yml stop kafka1`
