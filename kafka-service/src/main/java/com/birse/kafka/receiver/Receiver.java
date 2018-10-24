@@ -14,7 +14,7 @@ public class Receiver {
 
     private static final Logger LOG = LoggerFactory.getLogger(Receiver.class);
 
-    @KafkaListener(topics = "${app.topic.foo}")
+    @KafkaListener(topics = "${app.topic.projects}")
     public void receive(@Payload Project message,
                         @Headers MessageHeaders headers) {
         LOG.info("received message='{}'", message.toString());

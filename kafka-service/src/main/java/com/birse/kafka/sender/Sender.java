@@ -16,7 +16,7 @@ public class Sender {
     @Autowired
     private KafkaTemplate<Long, Project> kafkaTemplate;
 
-    @Value("${app.topic.foo}")
+    @Value("${app.topic.projects}")
     private String topic;
 
     public void send(Project project){
