@@ -1,44 +1,56 @@
  ## Getting Started
 
 
-to build
+##### to build
 
 - ./gradlew clean buildDocker (buildDocker includes build)
 
-to run
+##### to run
 
 - ./gradlew composeUp
 
-to stop 
+##### to stop 
 
 - ./gradlew composeDown
 
-to send a message
+##### to send a message
 
 - GET: http://localhost:8080/send
 
-to see received message
+#####to see received messages
 
-- tail logs of kafka-service in docker
+- `docker-compose -f docker-compose/docker-compose.yml logs -f  kafka-service`
 
-### To create a topic
+##### To create a topic
 
-- docker exec onto on of the kafka servers.
+- `docker-compose -f docker-compose/docker-compose.yml exec kafka1 bash`
+- `kafka-topics --create --zookeeper zookeeper:2181 --replication-factor 3 --partitions 10 --topic projects`
 
-`docker-compose exec -ti bash <container>`
-`kafka-topics --create --zookeeper zookeeper:2181 --replication-factor 3 --partitions 10 --topic projects`
+##### To query the cluster
+
+- `docker-compose -f docker-compose/docker-compose.yml exec worker bash`
+- `kafkacat -b kafka1:9092 -L`
+
+##### Stop a cluster node
+`docker-compose -f docker-compose/docker-compose.yml stop kafka1`
+
+##### Restart a cluster node 
+`docker-compose -f docker-compose/docker-compose.yml restart kafka1`
 
 
-`kafkacat -b kafka1:9092 -L`
-TODO add command for kafka connect and how to query cluster
+### TODO 
+
 TODO script the creation of topics
-TODO add multiple zookeepers
+
+TODO add multiple zookeepers (https://better-coding.com/building-apache-kafka-cluster-using-docker-compose-and-virtualbox/)
+
 TODO handle restart of kafka servers
-TODO add instructions for restart etc
+
+
 TODO restart handling / error handling etc
+
 TODO separate services
 
-`docker-compose -f docker-compose/docker-compose.yml restart kafka1`
 
 
 
