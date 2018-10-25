@@ -16,7 +16,7 @@
 ##### To create a topic
 
 - `docker-compose -f docker-compose/docker-compose.yml exec kafka1 bash`
-- `kafka-topics --create --zookeeper zookeeper1:2181 --replication-factor 3 --partitions 10 --topic projects`
+- `kafka-topics --create --zookeeper zookeeper1:12181 --replication-factor 3 --partitions 10 --topic projects`
 
 ##### To query the cluster
 
@@ -51,6 +51,8 @@ TODO handle restart of kafka servers
 TODO restart handling / error handling etc
 
 TODO separate services
+
+TODO different ports, not required I dont think?
 
 
 
