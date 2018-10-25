@@ -61,6 +61,13 @@ TODO restart handling / error handling etc
 
 TODO separate services
 
+TODO tidy up redundant gradle file
+
+TODO tidy up redundant dependencies
+
+
+
+
 
 
 
