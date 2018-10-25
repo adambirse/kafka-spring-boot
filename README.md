@@ -61,11 +61,7 @@ TODO handle restart of kafka servers
 
 TODO restart handling / error handling etc
 
-TODO tidy up redundant dependencies
-
 TODO Nice readme
-
-TODO remove duplicate gradle wrapper in sub projects
 
 TODO add test example for when consumer is down / scaling up.
 
