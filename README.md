@@ -15,6 +15,8 @@
 
 ##### To create a topic
 
+Only required when kafka containers are newly created.
+
 - `docker-compose -f docker-compose/docker-compose.yml exec kafka1 bash`
 - `kafka-topics --create --zookeeper zookeeper1:2181 --replication-factor 3 --partitions 10 --topic projects`
 
@@ -58,8 +60,6 @@ TODO handle restart of kafka servers
 
 
 TODO restart handling / error handling etc
-
-TODO separate services
 
 TODO tidy up redundant gradle file
 
