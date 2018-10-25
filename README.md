@@ -1,5 +1,5 @@
  # Kafka Cluster with Spring Boot.
- 
+
 This project is a little demonstrator of a multi node Kafka cluster with a spring boot producer and consumer.
 
 This [link](https://better-coding.com/building-apache-kafka-cluster-using-docker-compose-and-virtualbox/
@@ -15,7 +15,7 @@ In addition it makes use of a couple of a couple of gradle plugins from previous
 
 - `./gradlew composeUp`
 
-##### To stop 
+##### To stop
 
 - `./gradlew composeDown`
 
@@ -43,7 +43,7 @@ Only required when kafka containers are newly created.
 ##### Stop a cluster node
 `docker-compose -f docker-compose/docker-compose.yml stop kafka1`
 
-##### Restart a cluster node 
+##### Restart a cluster node
 `docker-compose -f docker-compose/docker-compose.yml restart kafka1`
 
 ##### Stop a Zookeeper
@@ -57,7 +57,7 @@ be unable to elect new leaders and co-ordinate.
 
 `docker-compose -f docker-compose/docker-compose.yml restart zookeeper1`
 
-### Functionality still to add 
+### Functionality still to add
 
 
 - script the creation of topic to remove manual step
@@ -65,11 +65,4 @@ be unable to elect new leaders and co-ordinate.
 - Architecture diagram
 - Update README with example of when the consumer is down / scaled up
 - Update producer to send messages in bulk rather than simple GET request
-
-
-
-
-
-
-
-
+- Multiple producers
