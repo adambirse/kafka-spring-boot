@@ -1,17 +1,23 @@
- ## Getting Started
+ # Kafka Cluster with Spring Boot.
+ 
+This project is a little demonstrator of a multi node Kafka cluster with a spring boot producer and consumer.
 
+This [link](https://better-coding.com/building-apache-kafka-cluster-using-docker-compose-and-virtualbox/
+) provides a good overview of the kafka cluster setup that I have created.
 
-##### to build
+In addition it makes use of a couple of a couple of gradle plugins from previous projects that I find useful for building docker images (buildDocker) and running them (composeUp / composeDown)
 
-- ./gradlew clean buildDocker (buildDocker includes build)
+##### To build
 
-##### to run
+- `./gradlew clean buildDocker` (buildDocker depends on build)
 
-- ./gradlew composeUp
+##### To run
 
-##### to stop 
+- `./gradlew composeUp`
 
-- ./gradlew composeDown
+##### To stop 
+
+- `./gradlew composeDown`
 
 ##### To create a topic
 
@@ -25,13 +31,13 @@ Only required when kafka containers are newly created.
 - `docker-compose -f docker-compose/docker-compose.yml exec worker bash`
 - `kafkacat -b kafka1:9092 -L`
 
-##### to send a message
+##### To send a message to the produder
 
 - GET: http://localhost:8080/send
 
-#####to see received messages
+##### To see received messages
 
-- `docker-compose -f docker-compose/docker-compose.yml logs -f  kafka-service`
+- `docker-compose -f docker-compose/docker-compose.yml logs -f  kafka-consumer`
 
 
 ##### Stop a cluster node
@@ -51,19 +57,15 @@ be unable to elect new leaders and co-ordinate.
 
 `docker-compose -f docker-compose/docker-compose.yml restart zookeeper1`
 
-### TODO 
-
-TODO script the creation of topics
+### Functionality still to add 
 
 
-TODO handle restart of kafka servers
+- script the creation of topic to remove manual step
+- Consumer error handling example
+- Architecture diagram
+- Update README with example of when the consumer is down / scaled up
+- Update producer to send messages in bulk rather than simple GET request
 
-
-TODO restart handling / error handling etc
-
-TODO Nice readme
-
-TODO add test example for when consumer is down / scaling up.
 
 
 
