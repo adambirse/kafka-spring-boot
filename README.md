@@ -16,7 +16,7 @@
 ##### To create a topic
 
 - `docker-compose -f docker-compose/docker-compose.yml exec kafka1 bash`
-- `kafka-topics --create --zookeeper zookeeper1:12181 --replication-factor 3 --partitions 10 --topic projects`
+- `kafka-topics --create --zookeeper zookeeper1:2181 --replication-factor 3 --partitions 10 --topic projects`
 
 ##### To query the cluster
 
@@ -38,12 +38,21 @@
 ##### Restart a cluster node 
 `docker-compose -f docker-compose/docker-compose.yml restart kafka1`
 
+##### Stop a Zookeeper
+
+`docker-compose -f docker-compose/docker-compose.yml stop zookeeper1`
+
+Note the system will still work if you stop all zookeepers, but once kafka clusters are stopped the system will
+be unable to elect new leaders and co-ordinate.
+
+##### Restart Zookeeper
+
+`docker-compose -f docker-compose/docker-compose.yml restart zookeeper1`
 
 ### TODO 
 
 TODO script the creation of topics
 
-TODO add multiple zookeepers (https://better-coding.com/building-apache-kafka-cluster-using-docker-compose-and-virtualbox/)
 
 TODO handle restart of kafka servers
 
@@ -51,8 +60,6 @@ TODO handle restart of kafka servers
 TODO restart handling / error handling etc
 
 TODO separate services
-
-TODO different ports, not required I dont think?
 
 
 
