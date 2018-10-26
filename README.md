@@ -57,6 +57,15 @@ be unable to elect new leaders and co-ordinate.
 
 `docker-compose -f docker-compose/docker-compose.yml restart zookeeper1`
 
+
+##### Stop the Consumer
+
+- `docker-compose -f docker-compose/docker-compose.yml stop kafka-consumer`
+- Send a few messages and watch them successfully send on the producer  
+- Restart the consumer and watch the sent messages appear 
+`docker-compose -f docker-compose/docker-compose.yml restart kafka-consumer`
+ 
+
 ### Functionality still to add
 
 

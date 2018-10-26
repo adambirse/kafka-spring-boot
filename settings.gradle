@@ -1,6 +1,4 @@
-rootProject.name = 'kafka-demo'
+rootProject.name = 'kafka-spring-boot'
 include 'kafka-producer'
 include 'kafka-consumer'
 include 'project-domain'
-
-
