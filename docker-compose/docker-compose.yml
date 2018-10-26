@@ -22,9 +22,22 @@ services:
         timeout: 8s
       environment:
         - JAVA_OPTS= -Xmx200m
-  kafka-consumer:
+  kafka-consumer1:
     image: com.birse/kafka-consumer:1.0-SNAPSHOT
-    hostname: kafka-consumer
+    hostname: kafka-consumer1
+    depends_on:
+    - kafka1
+    - kafka2
+    - kafka3
+    healthcheck:
+      test: ["CMD", "curl",  "--insecure",  "http://localhost:8080/actuator/health"]
+      interval: 15s
+      timeout: 8s
+    environment:
+    - JAVA_OPTS= -Xmx200m
+  kafka-consumer2:
+    image: com.birse/kafka-consumer:1.0-SNAPSHOT
+    hostname: kafka-consumer2
     depends_on:
     - kafka1
     - kafka2

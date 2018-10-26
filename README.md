@@ -58,17 +58,18 @@ be unable to elect new leaders and co-ordinate.
 `docker-compose -f docker-compose/docker-compose.yml restart zookeeper1`
 
 
-##### Stop the Consumer
+##### Stop the Consumer(s)
 
-- `docker-compose -f docker-compose/docker-compose.yml stop kafka-consumer`
+- `docker-compose -f docker-compose/docker-compose.yml stop kafka-consumer1 kafka-consumer2`
 - Send a few messages and watch them successfully send on the producer  
 - Restart the consumer and watch the sent messages appear 
-`docker-compose -f docker-compose/docker-compose.yml restart kafka-consumer`
+`docker-compose -f docker-compose/docker-compose.yml restart kafka-consumer1 kafka-consumer2`
  
 
 ### Functionality still to add
 
 
+- Multiple consumers - use scaling rather than hard-coding.
 - script the creation of topic to remove manual step
 - Consumer error handling example
 - Architecture diagram

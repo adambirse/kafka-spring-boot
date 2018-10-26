@@ -27,6 +27,7 @@ processTestResources {
 
 dependencies {
     compile project(':project-domain')
+    compile("org.apache.commons:commons-math3:3.6.1")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.kafka:spring-kafka")
 }

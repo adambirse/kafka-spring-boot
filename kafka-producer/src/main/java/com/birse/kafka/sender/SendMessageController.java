@@ -21,7 +21,7 @@ public class SendMessageController {
 
     private Project createProject() {
         Project p = new Project();
-        p.setId(1L);
+        p.setId(RandomIDGenerator.generateLong());
         p.setName("My Project");
         p.setSubmitted(true);
         return p;
