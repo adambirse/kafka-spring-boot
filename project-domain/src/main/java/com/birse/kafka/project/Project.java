@@ -6,6 +6,15 @@ public class Project {
     private boolean submitted;
     private long id;
 
+    public Project() {}
+
+
+    public Project(String name, boolean submitted, long id) {
+        this.name = name;
+        this.submitted = submitted;
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

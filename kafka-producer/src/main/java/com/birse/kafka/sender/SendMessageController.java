@@ -20,10 +20,6 @@ public class SendMessageController {
     }
 
     private Project createProject() {
-        Project p = new Project();
-        p.setId(RandomIDGenerator.generateLong());
-        p.setName("My Project");
-        p.setSubmitted(true);
-        return p;
+        return new Project("My Project", true, RandomIDGenerator.generateLong());
     }
 }
